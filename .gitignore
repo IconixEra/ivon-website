@@ -1,0 +1,14 @@
+messages.db
+
+*.db
+
+admin_backup_*.html
+admin_GOLDEN*.html
+
+app_backup_*.py
+app_GOLDEN*.py
+
+index.html.save
+
+__pycache__/
+*.pyc

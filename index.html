@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ivon | My Website</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <h2>IVON</h2>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+
+            <button id="themeButton" onclick="toggleTheme()">
+                ☀️ Light Mode
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Home -->
+
+    <section id="home" class="hero">
+
+        <p class="welcome">
+            WELCOME TO MY WEBSITE 🚀
+        </p>
+
+        <h1>
+            Hi, I'm <span>Ivon</span> 👋
+        </h1>
+
+        <p>
+            I'm learning programming and building my skills
+            one project at a time.
+        </p>
+
+        <a href="#projects" class="button">
+            View My Projects
+        </a>
+
+    </section>
+
+
+    <!-- About -->
+
+    <section id="about">
+
+        <h2>About Me 👨‍💻</h2>
+
+        <p>
+            I'm a student learning technology and programming.
+            My current journey includes Python, HTML, CSS
+            and JavaScript.
+        </p>
+
+
+        <div class="python-box">
+
+            <h3>🐍 Talk to Python</h3>
+
+            <p>
+                Enter your name and let Python greet you!
+            </p>
+
+            <input
+                type="text"
+                id="nameInput"
+                placeholder="Enter your name"
+            >
+
+            <button
+                onclick="talkToPython()"
+                class="python-button">
+
+                🐍 Ask Python
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+
+    <section id="skills">
+
+        <h2>My Coding Journey 💻</h2>
+
+        <div class="skills">
+
+            <div class="card">
+                <div class="emoji">🐍</div>
+                <h3>Python</h3>
+                <p>Learning programming and logic.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🌐</div>
+                <h3>HTML</h3>
+                <p>Building the structure of websites.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🎨</div>
+                <h3>CSS</h3>
+                <p>Designing beautiful websites.</p>
+            </div>
+
+            <div class="card">
+                <div class="emoji">⚡</div>
+                <h3>JavaScript</h3>
+                <p>Adding interaction to websites.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+
+    <section id="projects">
+
+        <h2>My Projects 🚀</h2>
+
+        <p>
+            Here are some of the things I'm building
+            during my coding journey.
+        </p>
+
+
+        <div class="projects">
+
+            <div class="project-card">
+
+                <div class="project-icon">🐍</div>
+
+                <h3>Python Projects</h3>
+
+                <p>
+                    Small Python programs that I'm creating
+                    while learning programming.
+                </p>
+
+                <button class="project-button">
+                    Coming Soon
+                </button>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">🌐</div>
+
+                <h3>My Website</h3>
+
+                <p>
+                    This portfolio website built using
+                    HTML, CSS and JavaScript.
+                </p>
+
+                <button class="project-button">
+                    You're Here 😂
+                </button>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-icon">📱</div>
+
+                <h3>Termux Projects</h3>
+
+                <p>
+                    Experiments and projects I'm building
+                    directly from my phone.
+                </p>
+
+                <button class="project-button">
+                    Coming Soon
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+
+    <section id="contact">
+
+        <h2>Contact Me 📩</h2>
+
+        <p>
+            Have a question, idea or project?
+            Send me a message.
+        </p>
+
+
+        <form class="contact-form">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                placeholder="Your Message"
+                rows="6"
+                required
+            ></textarea>
+
+            <button type="submit">
+                Send Message 🚀
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Ivon | Built with HTML, CSS & JavaScript 🚀
+        </p>
+
+    </footer>
+
+
+    <script src="script.js?v=4"></script>
+
+</body>
+
+</html>

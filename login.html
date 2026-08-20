@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>IVON ADMIN LOGIN</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: #0f172a;
+
+            color: white;
+
+            padding: 20px;
+        }
+
+
+        .login-box {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            background: #1e293b;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            border: 1px solid #334155;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.35);
+        }
+
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #94a3b8;
+
+            margin-bottom: 25px;
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #cbd5e1;
+
+            font-weight: bold;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 18px;
+
+            border-radius: 9px;
+
+            border: 1px solid #475569;
+
+            background: #0f172a;
+
+            color: white;
+
+            font-size: 16px;
+        }
+
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #22c55e;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        button:disabled {
+
+            opacity: 0.6;
+
+        }
+
+
+        #status {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            min-height: 22px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-box">
+
+
+    <h1>🔐 IVON ADMIN</h1>
+
+
+    <p class="subtitle">
+
+        Admin Dashboard Login
+
+    </p>
+
+
+    <form id="loginForm">
+
+
+        <label>
+            👤 Username
+        </label>
+
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+        >
+
+
+        <label>
+            🔑 Password
+        </label>
+
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+        >
+
+
+        <button
+            type="submit"
+            id="loginButton"
+        >
+
+            🔐 Login
+
+        </button>
+
+
+    </form>
+
+
+    <div id="status"></div>
+
+
+</div>
+
+
+
+<script>
+
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+
+            event.preventDefault();
+
+
+            const username =
+                document.getElementById(
+                    "username"
+                ).value;
+
+
+            const password =
+                document.getElementById(
+                    "password"
+                ).value;
+
+
+            const button =
+                document.getElementById(
+                    "loginButton"
+                );
+
+
+            const status =
+                document.getElementById(
+                    "status"
+                );
+
+
+            button.disabled = true;
+
+
+            button.textContent =
+                "🔄 Checking...";
+
+
+            status.textContent =
+                "Checking login...";
+
+
+            fetch(
+                "/api/login",
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+
+                        password: password
+
+                    })
+
+                }
+            )
+
+
+            .then(function(response) {
+
+                return response.json();
+
+            })
+
+
+            .then(function(data) {
+
+
+                if (data.success) {
+
+
+                    status.textContent =
+                        "✅ Login successful!";
+
+
+                    sessionStorage.setItem(
+                        "ivonAdminLoggedIn",
+                        "true"
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            window.location.href =
+                                "/admin.html";
+
+                        },
+                        500
+                    );
+
+
+                } else {
+
+
+                    status.textContent =
+                        "❌ " +
+                        data.message;
+
+
+                    button.disabled = false;
+
+
+                    button.textContent =
+                        "🔐 Login";
+
+                }
+
+            })
+
+
+            .catch(function(error) {
+
+
+                console.error(error);
+
+
+                status.textContent =
+                    "❌ Cannot connect to server.";
+
+
+                button.disabled = false;
+
+
+                button.textContent =
+                    "🔐 Login";
+
+            });
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
