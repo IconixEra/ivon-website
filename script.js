@@ -1,78 +1,53 @@
+const API_BASE = "https://ivon-website.onrender.com";
+
 // 🌙 Dark / Light Mode
-
 function toggleTheme() {
+    document.body.classList.toggle("light-mode");
 
-    document.body.classList.toggle(
-        "light-mode"
-    );
-
-    const button =
-        document.getElementById(
-            "themeButton"
-        );
-
+    const button = document.getElementById("themeButton");
 
     if (
-        document.body.classList.contains(
-            "light-mode"
-        )
+        document.body.classList.contains("light-mode")
     ) {
-
-        button.textContent =
-            "🌙 Dark Mode";
-
+        button.textContent = "🌙 Dark Mode";
     } else {
-
-        button.textContent =
-            "☀️ Light Mode";
-
+        button.textContent = "☀️ Light Mode";
     }
-
 }
 
 
-
 // 🐍 Talk to Python
-
 function talkToPython() {
 
-    const input =
-        document.getElementById(
-            "nameInput"
-        );
-
-
-    const name =
-        input.value.trim();
-
+    const input = document.getElementById("nameInput");
+    const name = input.value.trim();
 
     if (name === "") {
-
-        alert(
-            "⚠️ Please enter your name."
-        );
-
+        alert("⚠️ Please enter your name.");
         return;
-
     }
 
-
     fetch(
+        API_BASE +
         "/api/hello?name=" +
         encodeURIComponent(name)
     )
 
         .then(function(response) {
 
-            return response.json();
+            if (!response.ok) {
+                throw new Error(
+                    "Server returned " +
+                    response.status
+                );
+            }
 
+            return response.json();
         })
 
         .then(function(data) {
 
-            alert(
-                data.message
-            );
+            alert(data.message);
 
         })
 
@@ -85,17 +60,12 @@ function talkToPython() {
             );
 
         });
-
 }
 
 
-
 // 📩 Contact Form
-
 const contactForm =
-    document.querySelector(
-        ".contact-form"
-    );
+    document.querySelector(".contact-form");
 
 
 if (contactForm) {
@@ -106,23 +76,34 @@ if (contactForm) {
 
             event.preventDefault();
 
-
             const name =
                 contactForm.querySelector(
                     'input[type="text"]'
-                ).value;
-
+                ).value.trim();
 
             const email =
                 contactForm.querySelector(
                     'input[type="email"]'
-                ).value;
-
+                ).value.trim();
 
             const message =
                 contactForm.querySelector(
                     "textarea"
-                ).value;
+                ).value.trim();
+
+
+            if (
+                name === "" ||
+                email === "" ||
+                message === ""
+            ) {
+
+                alert(
+                    "⚠️ Please fill in all fields."
+                );
+
+                return;
+            }
 
 
             const contactData = {
@@ -137,7 +118,7 @@ if (contactForm) {
 
 
             fetch(
-                "/api/contact",
+                API_BASE + "/api/contact",
                 {
 
                     method: "POST",
@@ -159,6 +140,13 @@ if (contactForm) {
 
                 .then(function(response) {
 
+                    if (!response.ok) {
+                        throw new Error(
+                            "Server returned " +
+                            response.status
+                        );
+                    }
+
                     return response.json();
 
                 })
@@ -169,7 +157,6 @@ if (contactForm) {
                         "✅ " +
                         data.message
                     );
-
 
                     contactForm.reset();
 
