@@ -60,13 +60,11 @@ create_database()
 # On Render, these will come from environment variables.
 
 ADMIN_USERNAME = os.environ.get(
-    "ADMIN_USERNAME",
-    "Iconix_Era"
+    "ADMIN_USERNAME"
 )
 
 ADMIN_PASSWORD = os.environ.get(
-    "ADMIN_PASSWORD",
-    "Iivon@29"
+    "ADMIN_PASSWORD"
 )
 
 
