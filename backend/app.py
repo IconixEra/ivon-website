@@ -3,7 +3,7 @@ from urllib.parse import urlparse, parse_qs
 from datetime import datetime
 import os
 import json
-import sqlite3
+import psycopg2
 
 
 # ========================================
@@ -23,20 +23,18 @@ os.chdir(
 # DATABASE
 # ========================================
 
-DATABASE = "messages.db"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 
 def create_database():
 
-    connection = sqlite3.connect(
-        DATABASE
-    )
+    connection = psycopg2.connect(DATABASE_URL)
 
     cursor = connection.cursor()
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS messages (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             name TEXT NOT NULL,
             email TEXT NOT NULL,
             message TEXT NOT NULL,
@@ -115,9 +113,7 @@ class WebsiteHandler(
 
         if parsed_url.path == "/api/messages":
 
-            connection = sqlite3.connect(
-                DATABASE
-            )
+            connection = psycopg2.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -287,9 +283,7 @@ class WebsiteHandler(
             )
 
 
-            connection = sqlite3.connect(
-                DATABASE
-            )
+            connection = psycopg2.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -358,9 +352,7 @@ class WebsiteHandler(
             )
 
 
-            connection = sqlite3.connect(
-                DATABASE
-            )
+            connection = psycopg2.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -414,9 +406,7 @@ class WebsiteHandler(
             )
 
 
-            connection = sqlite3.connect(
-                DATABASE
-            )
+            connection = psycopg2.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
