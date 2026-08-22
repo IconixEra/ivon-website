@@ -328,6 +328,7 @@
 
 
 <script>
+const API_BASE = "https://ivon-website.onrender.com";
 
 
 let allMessages = [];
@@ -457,7 +458,7 @@ function getStartOfWeek() {
 function loadMessages() {
 
     fetch(
-        "/api/messages",
+        API_BASE + "/api/messages",
         {
             cache: "no-store"
         }
@@ -972,7 +973,7 @@ function editMessage(id) {
 
 
     fetch(
-        "/api/update-message",
+        API_BASE + "/api/update-message",
         {
 
             method: "POST",
@@ -1074,7 +1075,7 @@ function deleteMessage(id) {
 
 
     fetch(
-        "/api/delete-message",
+        API_BASE + "/api/delete-message",
         {
 
             method: "POST",

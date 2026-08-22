@@ -221,6 +221,8 @@
 
 <script>
 
+const API_BASE = "https://ivon-website.onrender.com";
+
 
 document
     .getElementById("loginForm")
@@ -268,7 +270,7 @@ document
 
 
             fetch(
-                "/api/login",
+                API_BASE + "/api/login",
                 {
 
                     method: "POST",
