@@ -361,11 +361,11 @@ class WebsiteHandler(
                 UPDATE messages
 
                 SET
-                    name = ?,
-                    email = ?,
-                    message = ?
+                    name = %s,
+                    email = %s,
+                    message = %s
 
-                WHERE id = ?
+                WHERE id = %s
             """, (
                 name,
                 email,
@@ -414,7 +414,7 @@ class WebsiteHandler(
             cursor.execute(
                 """
                 DELETE FROM messages
-                WHERE id = ?
+                WHERE id = %s
                 """,
                 (
                     message_id,
