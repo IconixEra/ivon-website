@@ -3,7 +3,7 @@ from urllib.parse import urlparse, parse_qs
 from datetime import datetime
 import os
 import json
-import psycopg2
+import psycopg
 
 
 # ========================================
@@ -28,7 +28,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def create_database():
 
-    connection = psycopg2.connect(DATABASE_URL)
+    connection = psycopg.connect(DATABASE_URL)
 
     cursor = connection.cursor()
 
@@ -113,7 +113,7 @@ class WebsiteHandler(
 
         if parsed_url.path == "/api/messages":
 
-            connection = psycopg2.connect(DATABASE_URL)
+            connection = psycopg.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -283,7 +283,7 @@ class WebsiteHandler(
             )
 
 
-            connection = psycopg2.connect(DATABASE_URL)
+            connection = psycopg.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -352,7 +352,7 @@ class WebsiteHandler(
             )
 
 
-            connection = psycopg2.connect(DATABASE_URL)
+            connection = psycopg.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
@@ -406,7 +406,7 @@ class WebsiteHandler(
             )
 
 
-            connection = psycopg2.connect(DATABASE_URL)
+            connection = psycopg.connect(DATABASE_URL)
 
             cursor = connection.cursor()
 
