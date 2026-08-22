@@ -296,7 +296,7 @@ class WebsiteHandler(
                     message,
                     created_at
                 )
-                VALUES (?, ?, ?, ?)
+                VALUES (%s, %s, %s, %s)
             """, (
                 name,
                 email,
