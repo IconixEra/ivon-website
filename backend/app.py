@@ -65,6 +65,8 @@ ADMIN_PASSWORD = os.environ.get(
     "ADMIN_PASSWORD"
 )
 
+ADMIN_SESSIONS = set()
+
 
 # ========================================
 # WEBSITE SERVER
@@ -112,6 +114,14 @@ class WebsiteHandler(
         # 📩 Get all messages
 
         if parsed_url.path == "/api/messages":
+
+            if not self.is_authenticated():
+
+                self.send_json({
+                    "success": False,
+                    "message": "Unauthorized."
+                })
+                return
 
             connection = psycopg.connect(DATABASE_URL)
 
@@ -210,13 +220,20 @@ class WebsiteHandler(
                 ADMIN_PASSWORD
             ):
 
+                token = secrets.token_urlsafe(32)
+
+                ADMIN_SESSIONS.add(token)
+
                 self.send_json({
 
                     "success":
                     True,
 
                     "message":
-                    "Login successful."
+                    "Login successful.",
+
+                    "token":
+                    token
 
                 })
 
@@ -329,6 +346,14 @@ class WebsiteHandler(
 
         if self.path == "/api/update-message":
 
+            if not self.is_authenticated():
+
+                self.send_json({
+                    "success": False,
+                    "message": "Unauthorized."
+                })
+                return
+
             data = self.read_json()
 
 
@@ -398,6 +423,14 @@ class WebsiteHandler(
 
         if self.path == "/api/delete-message":
 
+            if not self.is_authenticated():
+
+                self.send_json({
+                    "success": False,
+                    "message": "Unauthorized."
+                })
+                return
+
             data = self.read_json()
 
 
@@ -453,6 +486,24 @@ class WebsiteHandler(
             "API endpoint not found."
 
         })
+
+
+    # ====================================
+    # AUTHENTICATION
+    # ====================================
+
+    def is_authenticated(self):
+
+        token = self.headers.get(
+            "Authorization",
+            ""
+        )
+
+        if token.startswith("Bearer "):
+
+            token = token[7:]
+
+        return token in ADMIN_SESSIONS
 
 
     # ====================================

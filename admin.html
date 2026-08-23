@@ -460,7 +460,12 @@ function loadMessages() {
     fetch(
         API_BASE + "/api/messages",
         {
-            cache: "no-store"
+            cache: "no-store",
+            headers: {
+                "Authorization":
+                    "Bearer " +
+                    sessionStorage.getItem("ivonAdminToken")
+            }
         }
     )
 
@@ -980,7 +985,10 @@ function editMessage(id) {
 
             headers: {
                 "Content-Type":
-                    "application/json"
+                    "application/json",
+                "Authorization":
+                    "Bearer " +
+                    sessionStorage.getItem("ivonAdminToken")
             },
 
             body:
@@ -1082,7 +1090,10 @@ function deleteMessage(id) {
 
             headers: {
                 "Content-Type":
-                    "application/json"
+                    "application/json",
+                "Authorization":
+                    "Bearer " +
+                    sessionStorage.getItem("ivonAdminToken")
             },
 
             body:
