@@ -633,3 +633,28 @@ footer {
     }
 
 }
+
+/* ==========================================
+   HERO BUTTON GROUP
+   ========================================== */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+.secondary-button {
+    background: transparent;
+    color: #ffd43b;
+    border: 1px solid #ffd43b;
+}
+
+
+.secondary-button:hover {
+    background: #ffd43b;
+    color: #111111;
+}
