@@ -1,23 +1,537 @@
 /* ==========================================
-   🔔 ADMIN NOTIFICATIONS
+   IVON PORTFOLIO
+   Mission 2: Professional Portfolio Design
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0b0f;
+    color: #f5f5f5;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 7%;
+
+    background: rgba(11, 11, 15, 0.92);
+    border-bottom: 1px solid #292933;
+
+    backdrop-filter: blur(12px);
+}
+
+
+nav h2 {
+    color: #ffd43b;
+    letter-spacing: 3px;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    color: #ffd43b;
+}
+
+
+#themeButton {
+    padding: 9px 14px;
+
+    border: 1px solid #ffd43b;
+    border-radius: 20px;
+
+    background: transparent;
+    color: #ffd43b;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+}
+
+
+#themeButton:hover {
+    background: #ffd43b;
+    color: #111111;
+}
+
+
+/* ==========================================
+   HERO
+   ========================================== */
+
+.hero {
+    min-height: 88vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255, 212, 59, 0.18),
+            transparent 45%
+        );
+}
+
+
+.welcome {
+    color: #ffd43b;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+
+.hero h1 span {
+    color: #ffd43b;
+}
+
+
+.hero > p:not(.welcome) {
+    max-width: 650px;
+    color: #bdbdc7;
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+}
+
+
+.button {
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    background: #ffd43b;
+    color: #111111;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    box-shadow: 0 0 25px rgba(255, 212, 59, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 35px rgba(255, 212, 59, 0.45);
+}
+
+
+/* ==========================================
+   GENERAL SECTIONS
+   ========================================== */
+
+section {
+    padding: 90px 7%;
+    text-align: center;
+}
+
+
+section h2 {
+    font-size: 2.3rem;
+    margin-bottom: 18px;
+    color: #ffd43b;
+}
+
+
+section > p {
+    max-width: 700px;
+    margin: 0 auto 35px;
+    color: #bdbdc7;
+}
+
+
+/* ==========================================
+   ABOUT
+   ========================================== */
+
+#about {
+    background: #101017;
+}
+
+
+#about > p {
+    font-size: 1.05rem;
+}
+
+
+.python-box {
+    max-width: 600px;
+
+    margin: 40px auto 0;
+    padding: 30px;
+
+    border: 1px solid #30303b;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+.python-box h3 {
+    color: #ffd43b;
+    margin-bottom: 10px;
+}
+
+
+.python-box p {
+    color: #bdbdc7;
+    margin-bottom: 20px;
+}
+
+
+.python-box input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #3a3a47;
+    border-radius: 10px;
+
+    background: #0b0b0f;
+    color: white;
+
+    outline: none;
+    margin-bottom: 14px;
+}
+
+
+.python-box input:focus {
+    border-color: #ffd43b;
+}
+
+
+.python-button {
+    padding: 12px 22px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #ffd43b;
+    color: #111111;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+
+.python-button:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================
+   SKILLS
+   ========================================== */
+
+.skills {
+    max-width: 1100px;
+
+    margin: 40px auto 0;
+
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.card {
+    padding: 30px 20px;
+
+    border: 1px solid #30303b;
+    border-radius: 18px;
+
+    background: #111118;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: #ffd43b;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+.card .emoji {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+
+.card h3 {
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+
+.card p {
+    color: #a9a9b5;
+}
+
+
+/* ==========================================
+   PROJECTS
+   ========================================== */
+
+#projects {
+    background: #101017;
+}
+
+
+.projects {
+    max-width: 1100px;
+
+    margin: 40px auto 0;
+
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.project-card {
+    padding: 32px 25px;
+
+    border: 1px solid #30303b;
+    border-radius: 20px;
+
+    background: #0b0b0f;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: #ffd43b;
+}
+
+
+.project-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+
+.project-card h3 {
+    color: #ffd43b;
+    margin-bottom: 12px;
+}
+
+
+.project-card p {
+    color: #a9a9b5;
+    margin-bottom: 22px;
+}
+
+
+.project-button {
+    padding: 10px 18px;
+
+    border: 1px solid #ffd43b;
+    border-radius: 20px;
+
+    background: transparent;
+    color: #ffd43b;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   CONTACT
+   ========================================== */
+
+.contact-form {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 35px auto 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #353542;
+    border-radius: 12px;
+
+    background: #101017;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    outline: none;
+}
+
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ffd43b;
+}
+
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+
+.contact-form button {
+    padding: 14px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #ffd43b;
+    color: #111111;
+
+    font-weight: bold;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.contact-form button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(255, 212, 59, 0.25);
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #07070a;
+
+    border-top: 1px solid #292933;
+
+    color: #888894;
+}
+
+
+/* ==========================================
+   ADMIN NOTIFICATIONS
    ========================================== */
 
 #notification {
     position: fixed;
     top: 20px;
     right: 20px;
+
     z-index: 9999;
 }
 
 
 .notification {
     padding: 15px 20px;
+
     border-radius: 12px;
+
     background: #1f8f4d;
     color: white;
+
     font-weight: bold;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-    animation: notificationIn 0.3s ease;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    animation:
+        notificationIn 0.3s ease;
 }
 
 
@@ -36,6 +550,86 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 850px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+
+    .skills {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .projects {
+        grid-template-columns:
+            1fr;
+        max-width: 600px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+
+    .hero {
+        min-height: 80vh;
+        padding: 60px 18px;
+    }
+
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+
+    section {
+        padding: 70px 5%;
+    }
+
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+
+    .skills {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .python-box {
+        padding: 22px;
     }
 
 }
