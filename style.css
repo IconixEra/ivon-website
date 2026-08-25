@@ -728,3 +728,37 @@ section > p {
 .contact-form {
     margin-top: 25px;
 }
+
+/* ==========================================
+   PROJECT BUTTON LINKS
+   ========================================== */
+
+.project-button {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-button:hover {
+    background: #ffd43b;
+    color: #111111;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(255, 212, 59, 0.25);
+}
+
+/* ==========================================
+   PROJECT TECHNOLOGY STACK
+   ========================================== */
+
+.tech-stack {
+    margin-bottom: 20px;
+    color: #ffd43b;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
