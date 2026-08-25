@@ -658,3 +658,73 @@ footer {
     background: #ffd43b;
     color: #111111;
 }
+
+/* ==========================================
+   COMPACT SPACING
+   ========================================== */
+
+body {
+    line-height: 1.45;
+}
+
+
+section {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+
+section h2 {
+    margin-bottom: 12px;
+}
+
+
+section > p {
+    margin-bottom: 25px;
+}
+
+
+.hero {
+    min-height: 78vh;
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+
+.hero h1 {
+    margin-bottom: 12px;
+}
+
+
+.hero > p:not(.welcome) {
+    margin-bottom: 18px;
+}
+
+
+.welcome {
+    margin-bottom: 12px;
+}
+
+
+.python-box {
+    margin-top: 25px;
+    padding: 25px;
+}
+
+
+.skills,
+.projects {
+    margin-top: 28px;
+}
+
+
+.card,
+.project-card {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+
+.contact-form {
+    margin-top: 25px;
+}
